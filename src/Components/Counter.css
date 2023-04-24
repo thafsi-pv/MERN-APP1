@@ -6,3 +6,15 @@
 .btnIncrement{
     margin-right: 15px;
 }
+.container{
+    height: 100vh;
+     display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.countercontainer{
+   
+    height: 500px;
+     margin: auto;
+}

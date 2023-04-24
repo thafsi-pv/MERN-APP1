@@ -2,15 +2,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-border-bottom: 1px solid gray;
+border-bottom: 1px solid lightgray;
 
 }
 
 .usercontainer{
-    margin: 10px;
+   
     max-height: 500px;
-    background-color: #383838;
+    background-color: #efeeee;
     overflow-y: scroll;
     padding: 20px;
     border-radius: 5px;
+    
+}
+
+.userlist{
+    margin: 100px auto;
+    max-width: 50%;
+}
+
+.btndelete{
+    width: 20px;
+    height: 20px;
+}
+.btndelete:hover{
+   color: lightcoral;
+   cursor: pointer;
 }

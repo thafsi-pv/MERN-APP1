@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../Components/UserList.css";
+import {AiFillDelete} from 'react-icons/ai'
 
 const UserList = () => {
   const [userList, setUserList] = useState([{}]);
@@ -24,27 +25,20 @@ const UserList = () => {
   };
 
   return (
-    <div>
-      <div>
-       
-        <div className="usercontainer">
+    <div className="userlist">
         <h2>User List</h2>
+        <div className="usercontainer">
           {userList?.map((item) => (
             <div key={item.id} className="user">
               <p><b>{item.id}. </b>{item.title}</p>
               <span>
-                <button
-                  onClick={() => {
+                <AiFillDelete className="btndelete" onClick={() => {
                     handleUserListDelete(item.id);
-                  }}
-                >
-                  X
-                </button>
+                  }}/>
               </span>
             </div>
           ))}
         </div>
-      </div>
     </div>
   );
 };

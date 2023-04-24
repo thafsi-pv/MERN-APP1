@@ -7,6 +7,9 @@ import UserList from "./Components/UserList";
 import Accordion from "./Components/Accordion";
 
 function App() {
+  const [viewComponent, setViewComponent] = useState("Counter");
+  console.log("🚀 ~ file: App.jsx:12 ~ App ~ viewComponent:", viewComponent)
+
   const [count, setCount] = useState(0);
 
   const onIncrement = () => {
@@ -16,19 +19,35 @@ function App() {
     if (count > 0) setCount((prev) => prev - 1);
   };
 
+  const HandleViewComponent = (com) => {
+    setViewComponent(com);
+  };
+
   return (
     <>
-      <Counter
-        count={count}
-        onIncrement={onIncrement}
-        onDecrement={onDecrement}
-      />
-      <div>
-        <UserList />
+    <div>
+        <div className="nav">
+          <div className="navitem" onClick={() => HandleViewComponent("Counter")}>Counter</div>
+          <div className="navitem"  onClick={() => HandleViewComponent("UserList")}>UserList</div>
+          <div className="navitem"  onClick={() => HandleViewComponent("Accordion")}>Accordion</div>
+        </div>
       </div>
-      <div>
+      {viewComponent == 'Counter' && (
+        <Counter
+          count={count}
+          onIncrement={onIncrement}
+          onDecrement={onDecrement}
+        />
+      )}
+      {viewComponent == "UserList" && (
+        <div>
+          <UserList />
+        </div>
+      )}
+     {viewComponent=='Accordion'&& <div>
         <Accordion />
-      </div>
+      </div>}
+      
     </>
   );
 }
