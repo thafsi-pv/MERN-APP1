@@ -1,51 +1,48 @@
 import { useState } from "react";
 import "../Components/Accordion.css";
-import {FaAngleDown,FaAngleUp} from 'react-icons/fa'
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 const Accordion = () => {
-  const [faq, setFaq] = useState([
+  const [faq] = useState([
     {
       id: 1,
       title: "How does react work?",
       content:
         "Content1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Liberoest commodi unde. Ducimus beatae eveniet.",
-      viewDetails: false,
     },
     {
       id: 2,
       title: "What is SPA?",
       content:
         "Content2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Liberoest commodi unde. Ducimus beatae eveniet.",
-      viewDetails: false,
     },
     {
       id: 3,
       title: "What is virtual dom?",
       content:
         "Content3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Liberoest commodi unde. Ducimus beatae eveniet.",
-      viewDetails: false,
     },
     {
       id: 4,
       title: "What is vite?",
       content:
         "Content4 Lorem ipsum dolor sit amet consectetur adipisicing elit. Liberoest commodi unde. Ducimus beatae eveniet.",
-      viewDetails: false,
     },
   ]);
 
-  const [faqDetails, setFaqDetails] = useState(false);
+  const [currentFaq, setCurrentFaq] = useState(0);
 
-  const handleFaqView = (i) => {
-    console.log("🚀 ~ file: Accordion.jsx:15 ~ handleFaqView ~ i:", i);
-    const newlist = faq.map((item, index) => {
-      if (i === index && item.viewDetails == false) {
-        return { ...item, viewDetails: true };
-      } else {
-        return { ...item, viewDetails: false };
-      }
-    });
-    setFaq(newlist);
+  const handleFaqView = (id) => {
+    console.log("🚀 ~ file: Accordion.jsx:40 ~ handleFaqView ~ id:", id);
+    // const newlist = faq.map((item, index) => {
+    //   if (i === index && item.viewDetails == false) {
+    //     return { ...item, viewDetails: true };
+    //   } else {
+    //     return { ...item, viewDetails: false };
+    //   }
+    // });
+
+    setCurrentFaq((prev) => (prev == id ? "" : id));
   };
 
   return (
@@ -59,20 +56,18 @@ const Accordion = () => {
       </div>
       <div className="faqheading">FAQ</div>
       <div className="faqlist">
-        {faq.map((f, index) => (
-          <div key={index} className="acccontainer">
+        {faq.map((data) => (
+          <div key={data.id} className="acccontainer">
             <div className="acctitle">
-              <p>{f.title}</p>
-              <span className="accview" onClick={() => handleFaqView(index)}>
-                {f.viewDetails ? <FaAngleUp/> : <FaAngleDown/>}
+              <p>{data.title}</p>
+              <span className="accview" onClick={() => handleFaqView(data.id)}>
+                {data.viewDetails ? <FaAngleUp /> : <FaAngleDown />}
               </span>
             </div>
-            {f.viewDetails ? (
+            {data.id == currentFaq && (
               <div className="accdetails">
-                <p>{f.content}</p>
+                <p>{data.content}</p>
               </div>
-            ) : (
-              ""
             )}
           </div>
         ))}

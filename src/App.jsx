@@ -8,7 +8,7 @@ import Accordion from "./Components/Accordion";
 
 function App() {
   const [viewComponent, setViewComponent] = useState("Counter");
-  console.log("🚀 ~ file: App.jsx:12 ~ App ~ viewComponent:", viewComponent)
+  console.log("🚀 ~ file: App.jsx:12 ~ App ~ viewComponent:", viewComponent);
 
   const [count, setCount] = useState(0);
 
@@ -25,14 +25,29 @@ function App() {
 
   return (
     <>
-    <div>
+      <div>
         <div className="nav">
-          <div className="navitem" onClick={() => HandleViewComponent("Counter")}>Counter</div>
-          <div className="navitem"  onClick={() => HandleViewComponent("UserList")}>UserList</div>
-          <div className="navitem"  onClick={() => HandleViewComponent("Accordion")}>Accordion</div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("Counter")}
+          >
+            Counter
+          </div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("UserList")}
+          >
+            UserList
+          </div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("Accordion")}
+          >
+            Accordion
+          </div>
         </div>
       </div>
-      {viewComponent == 'Counter' && (
+      {viewComponent == "Counter" && (
         <Counter
           count={count}
           onIncrement={onIncrement}
@@ -44,10 +59,11 @@ function App() {
           <UserList />
         </div>
       )}
-     {viewComponent=='Accordion'&& <div>
-        <Accordion />
-      </div>}
-      
+      {viewComponent == "Accordion" && (
+        <div>
+          <Accordion />
+        </div>
+      )}
     </>
   );
 }
