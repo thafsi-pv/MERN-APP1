@@ -143,7 +143,6 @@ const Form1 = () => {
                   name="skills"
                   id="js"
                   value="JavaScript"
-                  //   checked={fields.skills.includes("JavaScript")}
                   onChange={handleChange}
                 />
                 <span>JavaScript</span>
