@@ -30,19 +30,10 @@ const Accordion = () => {
     },
   ]);
 
-  const [currentFaq, setCurrentFaq] = useState(0);
+  const [currentActiveFaq, setCurrentActiveFaq] = useState("");
 
   const handleFaqView = (id) => {
-    console.log("🚀 ~ file: Accordion.jsx:40 ~ handleFaqView ~ id:", id);
-    // const newlist = faq.map((item, index) => {
-    //   if (i === index && item.viewDetails == false) {
-    //     return { ...item, viewDetails: true };
-    //   } else {
-    //     return { ...item, viewDetails: false };
-    //   }
-    // });
-
-    setCurrentFaq((prev) => (prev == id ? "" : id));
+    setCurrentActiveFaq((prev) => (prev == id ? "" : id));
   };
 
   return (
@@ -51,7 +42,7 @@ const Accordion = () => {
         <img
           className="faqbanner"
           src="https://www.cybertill.com/wp-content/uploads/2020/08/10-questions-charity.png"
-          alt=""
+          alt="faq-banner"
         />
       </div>
       <div className="faqheading">FAQ</div>
@@ -61,10 +52,10 @@ const Accordion = () => {
             <div className="acctitle">
               <p>{data.title}</p>
               <span className="accview" onClick={() => handleFaqView(data.id)}>
-                {data.viewDetails ? <FaAngleUp /> : <FaAngleDown />}
+                {data.id===currentActiveFaq ? <FaAngleUp /> : <FaAngleDown />}
               </span>
             </div>
-            {data.id == currentFaq && (
+            {data.id == currentActiveFaq && (
               <div className="accdetails">
                 <p>{data.content}</p>
               </div>

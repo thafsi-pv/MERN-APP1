@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+}
+
+.formcontainer {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 700px;
+  border: 1px solid lightgray;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: rgb(255, 255, 255);
+  height: 580px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 100%;
+  margin-top: 1px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500px;
+  padding: 20px;
+}
+
+label {
+  font-size: small;
+  font-weight: 600;
+}
+
+input,
+select {
+  padding: 8px;
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  width: 100%;
+  border: 1px solid lightgray;
+}
+input:focus {
+  outline: none;
+}
+
+.chkbox {
+  display: flex;
+}
+
+.radiobtn {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+}
+
+img {
+  width: 350px;
+  height: 100%;
+  object-fit: cover;
+  padding: 20px;
+}
+
+.btnsubmit {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #5b48d7 !important;
+}
+
+.btndiv {
+  display: flex;
+  justify-self: center;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+  border-radius: 5px;
+  filter: invert(1);
+}
+
+.gender {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.genderlbl {
+  display: flex;
+  align-items: stretch;
+  justify-content: start;
+  padding: 0 20px 0 0;
+}
+
+.chkbox > label {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+.errormsg {
+  font-size: x-small;
+  color: rgb(178, 4, 4);
+}
+
+input[type="checkbox"] {
+  accent-color: #5b48d7;
+  background-color: white !important;
+  color: white !important;
+}
+
+input[type="radio"] {
+  accent-color: #5b48d7;
+  background-color: white !important;
+  color: white !important;
+}
+.containerleft{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.imgdiv{
+  flex-grow: 1;
+}
+.formheading{
+  font-size: x-large;
+  font-weight: 700;
+  padding: 0;
+  margin: 5px;
+}
+.formsubtitle{
+  font-size: small;
+  margin: 0;
+}

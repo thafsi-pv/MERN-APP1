@@ -5,6 +5,9 @@ import Counter from "./Components/Counter";
 import "./App.css";
 import UserList from "./Components/UserList";
 import Accordion from "./Components/Accordion";
+import Form1 from "./Components/Form1";
+import Form2 from "./Components/Form2";
+import Toggle from "./Components/Toggle"
 
 function App() {
   const [viewComponent, setViewComponent] = useState("Counter");
@@ -45,6 +48,24 @@ function App() {
           >
             Accordion
           </div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("Form1")}
+          >
+            Form1
+          </div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("Form2")}
+          >
+            Form2
+          </div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("Toggle")}
+          >
+            Toggle
+          </div>
         </div>
       </div>
       {viewComponent == "Counter" && (
@@ -62,6 +83,21 @@ function App() {
       {viewComponent == "Accordion" && (
         <div>
           <Accordion />
+        </div>
+      )}
+      {viewComponent == "Form1" && (
+        <div>
+          <Form1 />
+        </div>
+      )}
+      {viewComponent == "Form2" && (
+        <div>
+          <Form2 />
+        </div>
+      )}
+      {viewComponent == "Toggle" && (
+        <div>
+          <Toggle />
         </div>
       )}
     </>

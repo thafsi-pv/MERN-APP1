@@ -46,8 +46,12 @@
   position: absolute;
   top:0;
   padding: 10px;
+  cursor: pointer;
 }
 
 .navitem{
   padding: 10px;
+}
+.navitem:hover{
+  color: gray;
 }
