@@ -11,7 +11,6 @@ import Toggle from "./Components/Toggle"
 
 function App() {
   const [viewComponent, setViewComponent] = useState("Counter");
-  console.log("🚀 ~ file: App.jsx:12 ~ App ~ viewComponent:", viewComponent);
 
   const [count, setCount] = useState(0);
 

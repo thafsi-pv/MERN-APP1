@@ -69,7 +69,6 @@ const Form = () => {
 
   const validateInput = (name, value) => {
     const errors = {};
-    debugger
     switch (name) {
       case "firstName":
         if (!value.trim()) {
@@ -97,7 +96,6 @@ const Form = () => {
         break;
       case "skills":
         if (value?.length==0) {
-          console.log("🚀 ~ file: Form2.jsx:90 ~ validateInput ~ value case skill:", value)
           errors.skills = "Please select atleast one skills";
         } else errors.skills = null;
         break;

@@ -5,7 +5,6 @@ import {AiFillDelete} from 'react-icons/ai'
 
 const UserList = () => {
   const [userList, setUserList] = useState([{}]);
-  console.log("🚀 ~ file: UserList.jsx:9 ~ UserList ~ userList:", userList);
 
   useEffect(() => {
     getUserList();
