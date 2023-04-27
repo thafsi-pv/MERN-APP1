@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../Components/Accordion.css";
+import "../Accordion/Accordion.css";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 const Accordion = () => {

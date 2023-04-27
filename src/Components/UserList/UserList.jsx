@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "../Components/UserList.css";
+import "../UserList/UserList.css";
 import {AiFillDelete} from 'react-icons/ai'
 
 const UserList = () => {

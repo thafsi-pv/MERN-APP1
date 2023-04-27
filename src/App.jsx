@@ -1,13 +1,14 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import Counter from "./Components/Counter";
+import Counter from "./Components/Counter/Counter";
 import "./App.css";
-import UserList from "./Components/UserList";
-import Accordion from "./Components/Accordion";
-import Form1 from "./Components/Form1";
-import Form2 from "./Components/Form2";
-import Toggle from "./Components/Toggle"
+import UserList from "./Components/UserList/UserList";
+import Accordion from "./Components/Accordion/Accordion";
+import Form1 from "./Components/Form/Form1";
+import Form2 from "./Components/Form/Form2";
+import Toggle from "./Components/Toggle/Toggle"
+import Search from "./Components/Search/Search";
 
 function App() {
   const [viewComponent, setViewComponent] = useState("Counter");
@@ -65,6 +66,12 @@ function App() {
           >
             Toggle
           </div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("Search")}
+          >
+            Search
+          </div>
         </div>
       </div>
       {viewComponent == "Counter" && (
@@ -97,6 +104,11 @@ function App() {
       {viewComponent == "Toggle" && (
         <div>
           <Toggle />
+        </div>
+      )}
+      {viewComponent == "Search" && (
+        <div>
+          <Search />
         </div>
       )}
     </>
