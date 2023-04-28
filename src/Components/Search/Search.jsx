@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { IMG_URL, TMDB_SEARCH_API } from "../../constants";
 import SearchBar from "./SearchBar";
-import SearchList from "./SearchList";
 
 const Search = () => {
+  const [localSearchTxt,setLocalSearchTxt]=useState('')
+  const [tmdbSearchTxt,setTmdbSearchTxt]=useState('')
+
+  const [dataList] = useState(searchdata);
+  const [filterData, setFilterData] = useState(searchdata);
   const [imdbdata, setImdbData] = useState([{}]);
-  console.log("🚀 ~ file: Search.jsx:11 ~ Search ~ imdbdata:", imdbdata)
 
   useEffect(() => {
     getImdbData("malayalam");
@@ -18,40 +21,50 @@ const Search = () => {
     const data = await axios.get(
       `${TMDB_SEARCH_API}${txt}&page=1&include_adult=false`
     );
-    setImdbData(data?.data?.results);
+    if (data?.data?.results.length != 0) {
+      const results = data?.data?.results;
+      const updatedResult = results.map((obj) => {
+        const { poster_path, original_title, ...rest } = obj;
+        return { img: IMG_URL + poster_path, Name: original_title, ...rest };
+      });
+      setImdbData(updatedResult);
+    } else {
+      getImdbData("malayalam");
+    }
   };
 
   const handleTmdbSearch = (event) => {
     let txt = event.target.value;
+    setTmdbSearchTxt(event.target.value)
     getImdbData(txt);
   };
+
+  // ------------------------------------------
+
+  const handleSearchBar = (event) => {
+    var filterlist = dataList;
+    let txt = event.target.value;
+    setLocalSearchTxt(event.target.value)
+    let filterdData = filterlist.filter((item) =>
+      item.Name.toLowerCase().includes(txt.toLowerCase())
+    );
+    setFilterData(filterdData);
+  };
+
+const handleLocalClearBtn=()=>{
+  setLocalSearchTxt('');
+  setFilterData(dataList);
+}
+const handleTmdbClearBtn=()=>{
+  setTmdbSearchTxt('');
+  getImdbData("malayalam");
+}
 
   return (
     <div className="scontainer">
       <div className="serch-container">
-        <SearchBar data={searchdata} />
-        <div className="api-search">
-          <input
-            type="text"
-            name=""
-            placeholder="Search movie (tmdb api)"
-            id=""
-            onChange={handleTmdbSearch}
-          />
-          <div className="search-reco">
-            {imdbdata?.map((item) => {
-              return (
-                <SearchList
-                  id={item.id}
-                  img={IMG_URL + item?.poster_path}
-                  title={item.title}
-                  originaltitle={item.original_title}
-                  vote_average={item.vote_average}
-                />
-              );
-            })}
-          </div>
-        </div>
+        <SearchBar data={filterData} handleSearchBar={handleSearchBar} searchTxt={localSearchTxt} handleClearBtn={handleLocalClearBtn} placeholder={'Search local data'}/>
+        <SearchBar data={imdbdata} handleSearchBar={handleTmdbSearch}  searchTxt={tmdbSearchTxt} handleClearBtn={handleTmdbClearBtn} placeholder={'Search tmdb api data'}/>
       </div>
     </div>
   );

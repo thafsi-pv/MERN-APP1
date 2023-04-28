@@ -1,40 +1,32 @@
 import { useEffect, useState } from "react";
 import SearchList from "./SearchList";
+import {MdClear} from "react-icons/md"
 
-const SearchBar = ({ data }) => {
-  const [dataList, setDataList] = useState(data);
-  console.log("🚀 ~ file: SearchBar.jsx:5 ~ SearchBar ~ dataList:", dataList)
-  const [filterData, setFilterData] = useState(data);
-  console.log("🚀 ~ file: SearchBar.jsx:7 ~ SearchBar ~ filterData:", filterData)
-
-  useEffect(() => {
-    //setDataList(data);
-    //setFilterData(data);
-  }, []);
-
-  const handleSearchBar = (event) => {
-    var filterlist=dataList;
-    let txt = event.target.value;
-    let filterdData = filterlist.filter((item) =>
-      item.Name.toLowerCase().includes(txt.toLowerCase())
-    );
-    setFilterData(filterdData);
-  };
-
+const SearchBar = ({ data, handleSearchBar,searchTxt,handleClearBtn,placeholder }) => {
   return (
     <div className="local-search">
-      <input
-        type="text"
-        name=""
-        placeholder="Search from local data"
-        id=""
-        onChange={handleSearchBar}
-      />
+      <div className="input-div">
+        <input
+          type="text"
+          name=""
+          placeholder={placeholder}
+          id=""
+          value={searchTxt}
+          onChange={handleSearchBar}
+        />
+        {searchTxt && <MdClear className="clear-btn" onClick={handleClearBtn}/>}
+      </div>
       <div className="search-reco">
-        {filterData?.map((item) => {
+        {data?.map((item) => {
           return (
-           
-            <SearchList key={item.id} id={item.id} img={item.img} title={item.Name}  originaltitle={item.Name} />
+            <SearchList
+              key={item.id}
+              id={item.id}
+              img={item.img}
+              title={item.Name}
+              originaltitle={item.Name}
+              vote_average={item.vote_average}
+            />
           );
         })}
       </div>

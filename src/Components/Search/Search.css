@@ -16,6 +16,17 @@
 .serch-container input {
   padding: 15px;
 }
+.input-div{
+  position: relative;
+}
+.clear-btn{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 0px;
+  cursor: pointer;
+}
+
 .search-reco{
     display: flex;
     flex-direction: column;
