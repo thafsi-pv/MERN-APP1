@@ -1,4 +1,4 @@
-import "./search.css";
+import "./Search.css";
 import { searchdata } from "../../mocks/searchdata";
 import { useEffect, useState } from "react";
 import axios from "axios";

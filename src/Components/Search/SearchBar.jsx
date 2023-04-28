@@ -39,7 +39,7 @@ const SearchBar = ({ data }) => {
             //   </div>
             //   <p>{item.Name}</p>
             // </div>
-            <SearchList id={item.id} img={item.img} title={item.Name} />
+            <SearchList key={item.id} id={item.id} img={item.img} title={item.Name} />
           );
         })}
       </div>
