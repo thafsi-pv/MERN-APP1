@@ -8,6 +8,7 @@ import SearchList from "./SearchList";
 
 const Search = () => {
   const [imdbdata, setImdbData] = useState([{}]);
+  console.log("🚀 ~ file: Search.jsx:11 ~ Search ~ imdbdata:", imdbdata)
 
   useEffect(() => {
     getImdbData("malayalam");
@@ -44,6 +45,8 @@ const Search = () => {
                   id={item.id}
                   img={IMG_URL + item?.poster_path}
                   title={item.title}
+                  originaltitle={item.original_title}
+                  vote_average={item.vote_average}
                 />
               );
             })}

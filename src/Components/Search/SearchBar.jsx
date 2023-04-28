@@ -33,13 +33,8 @@ const SearchBar = ({ data }) => {
       <div className="search-reco">
         {filterData?.map((item) => {
           return (
-            // <div key={item.id} className="search-item">
-            //   <div>
-            //     <img src={item.img} alt="" />
-            //   </div>
-            //   <p>{item.Name}</p>
-            // </div>
-            <SearchList key={item.id} id={item.id} img={item.img} title={item.Name} />
+           
+            <SearchList key={item.id} id={item.id} img={item.img} title={item.Name}  originaltitle={item.Name} />
           );
         })}
       </div>

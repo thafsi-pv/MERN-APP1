@@ -40,6 +40,11 @@
     background-color: rgb(227, 225, 225);
 }
 
+.search-item p{
+  text-align: left;
+  flex-grow: 1;
+}
+
 .search-item img{
     flex-grow: 0;
     width: 50px;
@@ -52,4 +57,23 @@ p{
     padding: 0 10px;
     font-size: small;
     font-weight: 500;
+}
+
+.enddiv{
+  align-items: end;
+}
+.best-rating{
+  background-color: rgb(113, 248, 143);
+  border-radius: 5px;
+  color: rgb(6, 120, 12);
+  padding: 5px;
+  font-size: x-small;
+}
+
+.poor-rating{
+  background-color: rgb(250, 155, 155);
+  border-radius: 5px;
+  color: rgb(126, 0, 0);
+  padding: 5px;
+  font-size: x-small;
 }
