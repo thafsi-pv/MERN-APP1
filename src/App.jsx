@@ -9,6 +9,7 @@ import Form1 from "./Components/Form/Form1";
 import Form2 from "./Components/Form/Form2";
 import Toggle from "./Components/Toggle/Toggle"
 import Search from "./Components/Search/Search";
+import { Todo } from "./Components/Todo/Todo";
 
 function App() {
   const [viewComponent, setViewComponent] = useState("Counter");
@@ -72,6 +73,12 @@ function App() {
           >
             Search
           </div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("Todo")}
+          >
+            Todo App
+          </div>
         </div>
       </div>
       {viewComponent == "Counter" && (
@@ -109,6 +116,11 @@ function App() {
       {viewComponent == "Search" && (
         <div>
           <Search />
+        </div>
+      )}
+      {viewComponent == "Todo" && (
+        <div>
+          <Todo />
         </div>
       )}
     </>
