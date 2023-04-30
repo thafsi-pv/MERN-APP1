@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../Todo/Todo.css";
 import { BsFillPencilFill, BsFillTrash3Fill } from "react-icons/bs";
 import { IoIosClose } from "react-icons/io";
@@ -8,12 +8,15 @@ export const Todo = () => {
   const [newTodo, setNewTodo] = useState("");
   const [editTodo, setEditTodo] = useState("");
   const [editTodoId, setEditTodeId] = useState("");
+  const inputRef = useRef(null);
+  const inputEditRef = useRef(null);
 
   useEffect(() => {
     const dt = localStorage.getItem("TFR-TODO");
     if (dt) {
       setTodoList(JSON.parse(localStorage.getItem("TFR-TODO")));
     }
+    inputRef.current.focus();
   }, []);
 
   const handleAddTodo = () => {
@@ -36,6 +39,7 @@ export const Todo = () => {
     } else {
       alert("An empty world is impossible!");
     }
+    inputRef.current.focus();
   };
 
   const todoIsCompleted = (id) => {
@@ -49,6 +53,7 @@ export const Todo = () => {
     setTodoList(newlist);
     localStorage.setItem("TFR-TODO", JSON.stringify(newlist));
   };
+
   const todoDelete = (id) => {
     const newlist = todoList.filter((item) => item.id != id);
     setTodoList(newlist);
@@ -60,6 +65,7 @@ export const Todo = () => {
     const editTodoList = JSON.parse(localStorage.getItem("TFR-TODO"));
     const index = editTodoList.findIndex((obj) => obj.id == id);
     setEditTodo(editTodoList[index].todo);
+    setTimeout(() =>  inputEditRef.current.focus(), 0);
   };
 
   const updateTodo = () => {
@@ -87,6 +93,7 @@ export const Todo = () => {
               placeholder="New Todo"
               name="addnew"
               id=""
+              ref={inputRef}
               value={newTodo}
               onChange={() => setNewTodo(event.target.value)}
             />
@@ -94,7 +101,7 @@ export const Todo = () => {
               <span>
                 <IoIosClose
                   className="clear-icon"
-                  onClick={() => setNewTodo("")}
+                  onClick={() => {setNewTodo("");inputRef.current.focus()}}
                 />
               </span>
             )}
@@ -111,6 +118,7 @@ export const Todo = () => {
                       type="text"
                       name=""
                       id=""
+                      ref={inputEditRef}
                       value={editTodo}
                       onChange={() => setEditTodo(event.target.value)}
                     />
@@ -118,7 +126,7 @@ export const Todo = () => {
                       <span>
                         <IoIosClose
                           className="clear-icon"
-                          onClick={() => setEditTodo("")}
+                          onClick={() => {setEditTodo("");setTimeout(() =>  inputEditRef.current.focus(), 0);}}
                         />
                       </span>
                     )}
