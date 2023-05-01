@@ -33,8 +33,7 @@ export const Todo = () => {
       localStorage.setItem("TFR-TODO", JSON.stringify(newTdList));
       setNewTodo("");
 
-const todolist=todoListRef.current.scrollTo({top:0,behavior: 'smooth'});
-
+      todoListRef.current.scrollTo({ top: 0, behavior: "smooth" });
 
       // const listdiv = document.getElementById("todolist");
       // const lastItem = listdiv.lastChild;
