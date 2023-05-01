@@ -10,12 +10,11 @@ export const Todo = () => {
   const [editTodoId, setEditTodeId] = useState("");
   const inputRef = useRef(null);
   const inputEditRef = useRef(null);
+  const todoListRef = useRef(null);
 
   useEffect(() => {
     const dt = localStorage.getItem("TFR-TODO");
-    if (dt) {
-      setTodoList(JSON.parse(localStorage.getItem("TFR-TODO")));
-    }
+    dt && setTodoList(JSON.parse(localStorage.getItem("TFR-TODO")));
     inputRef.current.focus();
   }, []);
 
@@ -33,9 +32,13 @@ export const Todo = () => {
       setTodoList(newTdList);
       localStorage.setItem("TFR-TODO", JSON.stringify(newTdList));
       setNewTodo("");
-      const listdiv = document.getElementById("todolist");
-      const lastItem = listdiv.firstChild;
-      lastItem.scrollIntoView({ behavior: "smooth" });
+
+const todolist=todoListRef.current.scrollTo({top:0,behavior: 'smooth'});
+
+
+      // const listdiv = document.getElementById("todolist");
+      // const lastItem = listdiv.lastChild;
+      // lastItem.scrollIntoView({ behavior: "smooth" });
     } else {
       alert("An empty world is impossible!");
     }
@@ -65,7 +68,7 @@ export const Todo = () => {
     const editTodoList = JSON.parse(localStorage.getItem("TFR-TODO"));
     const index = editTodoList.findIndex((obj) => obj.id == id);
     setEditTodo(editTodoList[index].todo);
-    setTimeout(() =>  inputEditRef.current.focus(), 0);
+    setTimeout(() => inputEditRef.current.focus(), 0);
   };
 
   const updateTodo = () => {
@@ -101,14 +104,17 @@ export const Todo = () => {
               <span>
                 <IoIosClose
                   className="clear-icon"
-                  onClick={() => {setNewTodo("");inputRef.current.focus()}}
+                  onClick={() => {
+                    setNewTodo("");
+                    inputRef.current.focus();
+                  }}
                 />
               </span>
             )}
           </div>
           <button onClick={() => handleAddTodo()}>ADD TODO</button>
         </div>
-        <div className="todo-list" id="todolist">
+        <div className="todo-list" ref={todoListRef}>
           {todoList?.map((item) => (
             <div key={item.id} className="todo-item">
               {editTodoId != "" && editTodoId === item.id ? (
@@ -126,7 +132,10 @@ export const Todo = () => {
                       <span>
                         <IoIosClose
                           className="clear-icon"
-                          onClick={() => {setEditTodo("");setTimeout(() =>  inputEditRef.current.focus(), 0);}}
+                          onClick={() => {
+                            setEditTodo("");
+                            setTimeout(() => inputEditRef.current.focus(), 0);
+                          }}
                         />
                       </span>
                     )}
