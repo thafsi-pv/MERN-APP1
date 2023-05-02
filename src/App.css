@@ -41,17 +41,27 @@
   color: #888;
 }
 
-.nav{
+.nav {
   display: flex;
   position: absolute;
-  top:0;
+  top: 0;
   padding: 10px;
   cursor: pointer;
+  flex-wrap: wrap;
+  background-color: #e8e5e5;
+  font-size: small;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  /* box-shadow: rgba(0, 0, 0, 0.751) 5px 0px 10px; */
 }
 
-.navitem{
-  padding: 10px;
+.navitem {
+  padding: 5px;
+  border: 1px solid lightgray;
+  margin: 2px;
+  border-radius: 4px;
 }
-.navitem:hover{
+.navitem:hover {
   color: gray;
 }

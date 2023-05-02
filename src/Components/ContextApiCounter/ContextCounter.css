@@ -1,0 +1,27 @@
+.containter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(228, 226, 226);
+}
+.containter-counter
+{
+    display: flex;
+    justify-content: center;
+    background-color: bisque;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.528) 10px 10px 1px;
+}
+.counter-val{
+    font-size: xx-large;
+    font-weight: 800;
+}
+
+.btn-group{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 5px;
+}

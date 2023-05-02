@@ -7,9 +7,11 @@ import UserList from "./Components/UserList/UserList";
 import Accordion from "./Components/Accordion/Accordion";
 import Form1 from "./Components/Form/Form1";
 import Form2 from "./Components/Form/Form2";
-import Toggle from "./Components/Toggle/Toggle"
+import Toggle from "./Components/Toggle/Toggle";
 import Search from "./Components/Search/Search";
 import { Todo } from "./Components/Todo/Todo";
+import ContextCounter from "./Components/ContextApiCounter/ContextCounter";
+import { CounterProvider } from "./context/CounterContext";
 
 function App() {
   const [viewComponent, setViewComponent] = useState("Counter");
@@ -49,16 +51,10 @@ function App() {
           >
             Accordion
           </div>
-          <div
-            className="navitem"
-            onClick={() => HandleViewComponent("Form1")}
-          >
+          <div className="navitem" onClick={() => HandleViewComponent("Form1")}>
             Form1
           </div>
-          <div
-            className="navitem"
-            onClick={() => HandleViewComponent("Form2")}
-          >
+          <div className="navitem" onClick={() => HandleViewComponent("Form2")}>
             Form2
           </div>
           <div
@@ -73,11 +69,14 @@ function App() {
           >
             Search
           </div>
+          <div className="navitem" onClick={() => HandleViewComponent("Todo")}>
+            Todo App
+          </div>
           <div
             className="navitem"
-            onClick={() => HandleViewComponent("Todo")}
+            onClick={() => HandleViewComponent("ContextCounter")}
           >
-            Todo App
+            Context Api Counter
           </div>
         </div>
       </div>
@@ -121,6 +120,13 @@ function App() {
       {viewComponent == "Todo" && (
         <div>
           <Todo />
+        </div>
+      )}
+      {viewComponent == "ContextCounter" && (
+        <div>
+          <CounterProvider>
+            <ContextCounter />
+          </CounterProvider>
         </div>
       )}
     </>
