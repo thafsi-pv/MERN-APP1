@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "../Todo/Todo.css";
-import { BsFillPencilFill, BsFillTrash3Fill } from "react-icons/bs";
+import { BsFillPencilFill, BsFillTrash3Fill, BsCircle } from "react-icons/bs";
+import { AiOutlineCheckCircle } from "react-icons/ai";
 import { IoIosClose } from "react-icons/io";
 
 export const Todo = () => {
@@ -11,12 +12,18 @@ export const Todo = () => {
   const inputRef = useRef(null);
   const inputEditRef = useRef(null);
   const todoListRef = useRef(null);
+  const [itemLeft, setItemLeft] = useState();
 
   useEffect(() => {
     const dt = localStorage.getItem("TFR-TODO");
     dt && setTodoList(JSON.parse(localStorage.getItem("TFR-TODO")));
     inputRef.current.focus();
   }, []);
+
+  useEffect(() => {
+    let count = todoList.filter((item) => item.isCompleted == false).length;
+    setItemLeft(count);
+  }, [todoList]);
 
   const handleAddTodo = () => {
     //const data = localStorage.getItem("TFR-TODO");
@@ -82,6 +89,12 @@ export const Todo = () => {
     } else alert("An empty world is impossible!..");
   };
 
+  const clearCompleted = () => {
+    const newList = todoList.filter((item) => item.isCompleted != true);
+    setTodoList(newList);
+    localStorage.setItem("TFR-TODO", JSON.stringify(newList));
+  };
+
   return (
     <div className="todo-container">
       <div className="main-container">
@@ -93,7 +106,7 @@ export const Todo = () => {
             <div className="add-input">
               <input
                 type="text"
-                placeholder="New Todo"
+                placeholder="What needs to be done?"
                 name="addnew"
                 id=""
                 ref={inputRef}
@@ -152,16 +165,25 @@ export const Todo = () => {
                   </div>
                 ) : (
                   <>
-                    <p
-                      onClick={() => todoIsCompleted(item.id)}
-                      className={
-                        item.isCompleted
-                          ? "item-title item-completed"
-                          : "item-title"
-                      }
-                    >
-                      {item.todo}
-                    </p>
+                    <div className="todo-name">
+                      <span>
+                        {!item.isCompleted ? (
+                          <BsCircle className="uncheck-icon" />
+                        ) : (
+                          <AiOutlineCheckCircle className="check-icon" />
+                        )}
+                      </span>
+                      <p
+                        onClick={() => todoIsCompleted(item.id)}
+                        className={
+                          item.isCompleted
+                            ? "item-title item-completed"
+                            : "item-title"
+                        }
+                      >
+                        {item.todo}
+                      </p>
+                    </div>
                     <div className="item-action">
                       <BsFillPencilFill
                         className="action-edit"
@@ -176,6 +198,19 @@ export const Todo = () => {
                 )}
               </div>
             ))}
+          </div>
+          <div className="todo-footer">
+            <div className="">
+              <p>{itemLeft} Item left</p>
+            </div>
+            <div className="btn-filter">
+              <p className="active">All</p>
+              <p>Active</p>
+              <p>Completed</p>
+            </div>
+            <div className="">
+              <p className="clear-completed" onClick={()=>clearCompleted()}>Clear Completed</p>
+            </div>
           </div>
         </div>
       </div>
