@@ -85,7 +85,7 @@ function App() {
             className="navitem"
             onClick={() => HandleViewComponent("ReducerCounter")}
           >
-            UserReducer Counter
+            UseReducer Counter
           </div>
           <div
             className="navitem"

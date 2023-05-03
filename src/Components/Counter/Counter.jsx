@@ -1,5 +1,5 @@
 import "./Counter.css";
-import {FaPlus,FaMinus} from 'react-icons/fa'
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 const Counter = ({ count, onIncrement, onDecrement, counterDetails }) => {
   return (
@@ -11,10 +11,11 @@ const Counter = ({ count, onIncrement, onDecrement, counterDetails }) => {
         </div>
         <div className="btn">
           <button className="btnIncrement" onClick={onIncrement}>
-           <FaPlus/>
+            <FaPlus />
           </button>
-
-          <button onClick={onDecrement}><FaMinus/></button>
+          <button onClick={onDecrement}>
+            <FaMinus />
+          </button>
         </div>
       </div>
     </div>
