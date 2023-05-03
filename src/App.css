@@ -54,6 +54,7 @@
   position: fixed;
   top: 0;
   /* box-shadow: rgba(0, 0, 0, 0.751) 5px 0px 10px; */
+  z-index: 10;
 }
 
 .navitem {
