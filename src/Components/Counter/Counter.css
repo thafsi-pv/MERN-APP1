@@ -3,18 +3,28 @@
     justify-content: space-between;
 } */
 
-.btnIncrement{
-    margin-right: 15px;
+.btnIncrement {
+  margin-right: 15px;
 }
-.container{
-    height: 100vh;
-     display: flex;
-    align-items: center;
-    margin: auto;
+.container {
+  color: rgba(255, 255, 255, 0.466);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #21394e 0%,
+    rgba(21, 36, 49, 0.964) 100%
+  );
 }
 
-.countercontainer{
-   
-    height: 500px;
-     margin: auto;
+.counter-container {
+  border-radius: 5px;
+  width: 400px;
+  height: auto;
+  margin: auto;
+  background-color: #21394e;
+  padding: 40px;
+  box-shadow: rgba(0, 0, 0, 0.528) 10px 10px 1px;
 }

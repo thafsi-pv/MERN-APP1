@@ -12,6 +12,9 @@ import Search from "./Components/Search/Search";
 import { Todo } from "./Components/Todo/Todo";
 import ContextCounter from "./Components/ContextApiCounter/ContextCounter";
 import { CounterProvider } from "./context/CounterContext";
+import ReducerCounter from "./Components/UseReducerCounter/ReducerCounter";
+import ContextReducerCounter from "./Components/Context&ReducerCounter/ContextReducerCounter";
+import { ReducerProvider } from "./context/ReducerContext";
 
 function App() {
   const [viewComponent, setViewComponent] = useState("Counter");
@@ -78,6 +81,18 @@ function App() {
           >
             Context Api Counter
           </div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("ReducerCounter")}
+          >
+            UserReducer Counter
+          </div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("ContextReducerCounter")}
+          >
+            Context & Reducer Counter
+          </div>
         </div>
       </div>
       {viewComponent == "Counter" && (
@@ -85,6 +100,7 @@ function App() {
           count={count}
           onIncrement={onIncrement}
           onDecrement={onDecrement}
+          counterDetails={'Counter using useState hook'}
         />
       )}
       {viewComponent == "UserList" && (
@@ -127,6 +143,18 @@ function App() {
           <CounterProvider>
             <ContextCounter />
           </CounterProvider>
+        </div>
+      )}
+      {viewComponent == "ReducerCounter" && (
+        <div>
+          <ReducerCounter />
+        </div>
+      )}
+      {viewComponent == "ContextReducerCounter" && (
+        <div>
+          <ReducerProvider>
+            <ContextReducerCounter />
+          </ReducerProvider>
         </div>
       )}
     </>

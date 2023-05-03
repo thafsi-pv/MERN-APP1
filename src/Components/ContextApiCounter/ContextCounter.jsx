@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import "../ContextApiCounter/ContextCounter.css";
 import { CounterContext } from "../../context/CounterContext";
+import Counter from "../Counter/Counter";
 
 const ContextCounter = () => {
   const counter = useContext(CounterContext);
@@ -14,17 +14,12 @@ const ContextCounter = () => {
   };
 
   return (
-    <div className="containter">
-      <div className="containter-counter">
-        <div>
-          <div className="counter-val">Count {counter.count}</div>
-          <div className="btn-group">
-            <button onClick={AddCount}> +</button>
-            <button onClick={ReduceCount}> -</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Counter
+      count={counter.count}
+      counterDetails={"Counter working with useContext hook"}
+      onIncrement={AddCount}
+      onDecrement={ReduceCount}
+    />
   );
 };
 

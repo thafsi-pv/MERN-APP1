@@ -1,11 +1,12 @@
 import "./Counter.css";
 import {FaPlus,FaMinus} from 'react-icons/fa'
 
-const Counter = ({ count, onIncrement, onDecrement }) => {
+const Counter = ({ count, onIncrement, onDecrement, counterDetails }) => {
   return (
     <div className="container">
-      <div className="countercontainer">
+      <div className="counter-container">
         <div className="viewcount">
+          <p>{counterDetails}</p>
           <h1>Count {count}</h1>
         </div>
         <div className="btn">

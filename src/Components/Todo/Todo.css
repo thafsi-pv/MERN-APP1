@@ -1,21 +1,26 @@
 .todo-container {
   margin-top: 80px;
-  background-color: #1e1e1e;
+  background-color: #142431;
+
   height: 100vh;
   color: #8fa8c1;
+}
+.main-container {
   display: flex;
   align-items: center;
+  height: 100vh;
+  background: radial-gradient(50% 50% at 50% 50%, #1d3042 0%, rgba(21, 36, 49, 0) 100%);
 }
 
-.todo-container button{
-    color: #8fa8c1;
-    background-color: #0b5488;
-    border-radius: 4px;
+.todo-container button {
+  color: #8fa8c1;
+  background-color: #0b5488;
+  border-radius: 4px;
 }
 
-.edit-todo .btn-cancel{
-    background-color: #8fa8c1;
-    color: #0b5488;
+.edit-todo .btn-cancel {
+  background-color: #8fa8c1;
+  color: #0b5488;
 }
 
 .todo {
@@ -43,40 +48,39 @@
   flex-grow: 1;
   margin-right: 8px;
   position: relative;
-  
 }
-.add-input span{
-    position: absolute;
-    right: 18px;
-    top: 12px;
-    /* margin-left: 10px;
+.add-input span {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  /* margin-left: 10px;
    padding-left: 10px;
    background-color: #142431; */
 }
-.clear-icon{
-    width: 20px;
-    height: 20px;
+.clear-icon {
+  width: 20px;
+  height: 20px;
 }
 
-.todo-title p{
-font-size: xx-large;
-font-weight: 700;
-padding: 0;
-margin: 15px;
+.todo-title p {
+  font-size: xx-large;
+  font-weight: 700;
+  padding: 0;
+  margin: 15px;
 }
 .item-title {
   font-size: large;
   font-weight: 800;
   cursor: pointer;
 }
-.item-completed{
-    text-decoration: line-through;
+.item-completed {
+  text-decoration: line-through;
 }
 
 .todo-list {
   margin-top: 20px;
   max-height: 400px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-bottom: 100px;
   margin-bottom: 25px;
 }
@@ -94,46 +98,48 @@ margin: 15px;
   margin: 4px;
   text-align: left;
 }
-.item-action{
-    display: flex;
-    justify-content: space-between;
+.item-action {
+  display: flex;
+  justify-content: space-between;
 }
 
-.action-edit ,.action-delete{
-    margin-right: 10px;
-    font-size: x-large;
-    cursor: pointer;
-    opacity: 0.6;
+.action-edit,
+.action-delete {
+  margin-right: 10px;
+  font-size: x-large;
+  cursor: pointer;
+  opacity: 0.6;
 }
-.action-edit:hover ,.action-delete:hover{
-    opacity: 1;
+.action-edit:hover,
+.action-delete:hover {
+  opacity: 1;
 }
 
-.edit-todo{
-    display: flex;
-    width: 100%;
-    align-items: center;
+.edit-todo {
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
-.edit-input{
-    width: 100%;
-    position: relative;
+.edit-input {
+  width: 100%;
+  position: relative;
 }
-.edit-input span{
-    position: absolute;
-    right: 10px;
-    top: 11px;
+.edit-input span {
+  position: absolute;
+  right: 10px;
+  top: 11px;
 }
-.edit-todo .edit-input input{
-    background-color: #142431;
+.edit-todo .edit-input input {
+  background-color: #142431;
   padding: 12px 35px 12px 12px;
   color: white;
   border: 1px solid rgb(126, 125, 125);
   flex-grow: 1;
 }
-.edit-todo button{
-    margin-left: 5px;
-    background-color: #0b5488;
+.edit-todo button {
+  margin-left: 5px;
+  background-color: #0b5488;
 }
-.edit-action{
-    display: flex;
+.edit-action {
+  display: flex;
 }
