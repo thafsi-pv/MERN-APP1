@@ -15,6 +15,7 @@ import { CounterProvider } from "./context/CounterContext";
 import ReducerCounter from "./Components/UseReducerCounter/ReducerCounter";
 import ContextReducerCounter from "./Components/Context&ReducerCounter/ContextReducerCounter";
 import { ReducerProvider } from "./context/ReducerContext";
+import NodeUserList from "./Components/UserListFromNode/NodeUserList";
 
 function App() {
   const [viewComponent, setViewComponent] = useState("Counter");
@@ -93,6 +94,12 @@ function App() {
           >
             Context & Reducer Counter
           </div>
+          <div
+            className="navitem"
+            onClick={() => HandleViewComponent("UserListFromNode")}
+          >
+            Get Custom User List
+          </div>
         </div>
       </div>
       {viewComponent == "Counter" && (
@@ -155,6 +162,11 @@ function App() {
           <ReducerProvider>
             <ContextReducerCounter />
           </ReducerProvider>
+        </div>
+      )}
+      {viewComponent == "UserListFromNode" && (
+        <div>
+            <NodeUserList />
         </div>
       )}
     </>

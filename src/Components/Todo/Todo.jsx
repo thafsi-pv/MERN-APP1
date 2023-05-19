@@ -165,7 +165,10 @@ export const Todo = () => {
                   </div>
                 ) : (
                   <>
-                    <div className="todo-name">
+                    <div
+                      className="todo-name"
+                      onClick={() => todoIsCompleted(item.id)}
+                    >
                       <span>
                         {!item.isCompleted ? (
                           <BsCircle className="uncheck-icon" />
@@ -174,7 +177,6 @@ export const Todo = () => {
                         )}
                       </span>
                       <p
-                        onClick={() => todoIsCompleted(item.id)}
                         className={
                           item.isCompleted
                             ? "item-title item-completed"
@@ -209,7 +211,9 @@ export const Todo = () => {
               <p>Completed</p>
             </div>
             <div className="">
-              <p className="clear-completed" onClick={()=>clearCompleted()}>Clear Completed</p>
+              <p className="clear-completed" onClick={() => clearCompleted()}>
+                Clear Completed
+              </p>
             </div>
           </div>
         </div>
